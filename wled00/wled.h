@@ -24,15 +24,15 @@
 //#define WLED_DISABLE_OTA         // saves 14kb
 
 // You can choose some of these features to disable:
-//#define WLED_DISABLE_ALEXA       // saves 11kb
-//#define WLED_DISABLE_BLYNK       // saves 6kb
-//#define WLED_DISABLE_HUESYNC     // saves 4kb
-//#define WLED_DISABLE_INFRARED    // there is no pin left for this on ESP8266-01, saves 12kb
+#define WLED_DISABLE_ALEXA       // saves 11kb
+#define WLED_DISABLE_BLYNK       // saves 6kb
+#define WLED_DISABLE_HUESYNC     // saves 4kb
+#define WLED_DISABLE_INFRARED    // there is no pin left for this on ESP8266-01, saves 12kb
 #ifndef WLED_DISABLE_MQTT
   #define WLED_ENABLE_MQTT         // saves 12kb
 #endif
-#define WLED_ENABLE_ADALIGHT     // saves 500b only (uses GPIO3 (RX) for serial)
-//#define WLED_ENABLE_DMX          // uses 3.5kb (use LEDPIN other than 2)
+// #define WLED_ENABLE_ADALIGHT     // saves 500b only (uses GPIO3 (RX) for serial)
+#define WLED_ENABLE_DMX          // uses 3.5kb (use LEDPIN other than 2)
 //#define WLED_ENABLE_JSONLIVE     // peek LED output via /json/live (WS binary peek is always enabled)
 #ifndef WLED_DISABLE_LOXONE
   #define WLED_ENABLE_LOXONE       // uses 1.2kb
@@ -122,7 +122,7 @@
   #include "src/dependencies/dmx/ESPDMX.h"
  #else //ESP32
   #include "src/dependencies/dmx/SparkFunDMX.h"
- #endif  
+ #endif
 #endif
 
 #include "src/dependencies/e131/ESPAsyncE131.h"
@@ -361,8 +361,8 @@ WLED_GLOBAL bool arlsForceMaxBri _INIT(false);                    // enable to f
  #ifdef ESP8266
   WLED_GLOBAL DMXESPSerial dmx;
  #else //ESP32
-  WLED_GLOBAL SparkFunDMX dmx; 
- #endif 
+  WLED_GLOBAL SparkFunDMX dmx;
+ #endif
 WLED_GLOBAL uint16_t e131ProxyUniverse _INIT(0);                  // output this E1.31 (sACN) / ArtNet universe via MAX485 (0 = disabled)
 #endif
 WLED_GLOBAL uint16_t e131Universe _INIT(1);                       // settings for E1.31 (sACN) protocol (only DMX_MODE_MULTIPLE_* can span over consequtive universes)
@@ -543,7 +543,7 @@ WLED_GLOBAL int16_t currentPlaylist _INIT(-1);
 //still used for "PL=~" HTTP API command
 WLED_GLOBAL byte presetCycCurr _INIT(0);
 WLED_GLOBAL byte presetCycMin _INIT(1);
-WLED_GLOBAL byte presetCycMax _INIT(5); 
+WLED_GLOBAL byte presetCycMax _INIT(5);
 
 // realtime
 WLED_GLOBAL byte realtimeMode _INIT(REALTIME_MODE_INACTIVE);
